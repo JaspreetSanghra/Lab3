@@ -34,6 +34,11 @@ public class AddressBook
 		}
 	}
 	
+	public int NumberOfContacts()
+	{
+		return ContactList.size();
+	}
+	
 	private int FindIndex(String firstName)
 	{
 		for (int i = 0; i < ContactList.size(); i++) 
@@ -50,5 +55,11 @@ public class AddressBook
 	public static void main(String[] args)
 	{
 		System.out.println("AddressBook");
+		AddressBook book = new AddressBook();
+		System.out.println(book.NumberOfContacts());
+		book.AddBuddy("Jaspreet");
+		System.out.println(book.NumberOfContacts());
+		book.RemoveBuddy("Jaspreet");
+		System.out.println(book.NumberOfContacts());
 	}
 }
