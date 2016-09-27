@@ -75,6 +75,11 @@ public class AddressBook
 		return -1;
 	}
 
+	private boolean FalseTest()
+	{
+		return true;
+	}
+
 	/**
 	 * @param args
 	 */
