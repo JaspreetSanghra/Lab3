@@ -9,17 +9,27 @@ public class AddressBook
 	{
 		ContactList = new ArrayList<BuddyInfo>();
 	}
-	
-	public boolean AddBuddy(String firstName)
+
+	public boolean AddBuddy(String firstName, String lastName, int id)
 	{
 		if(FindIndex(firstName) == -1 )
 		{
-			ContactList.add(new BuddyInfo(firstName));
+			ContactList.add(new BuddyInfo(firstName, lastName, id));
 			return true;
 		}
 		return false;
 	}
-	
+
+	public boolean AddBuddy(BuddyInfo buddy)
+	{
+		if(FindIndex(buddy.GetFirstName()) == -1 )
+		{
+			ContactList.add(buddy);
+			return true;
+		}
+		return false;
+	}
+
 	public boolean RemoveBuddy(String firstName)
 	{
 		int removeIndex = FindIndex(firstName);
@@ -33,12 +43,25 @@ public class AddressBook
 			return false;
 		}
 	}
-	
+
+	public boolean RemoveBuddy(int index)
+	{
+		if(index >= 0 && index < ContactList.size())
+		{
+			ContactList.remove(index);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	public int NumberOfContacts()
 	{
 		return ContactList.size();
 	}
-	
+
 	private int FindIndex(String firstName)
 	{
 		for (int i = 0; i < ContactList.size(); i++) 
@@ -51,15 +74,16 @@ public class AddressBook
 		}
 		return -1;
 	}
-	
+
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
-		System.out.println("AddressBook");
+		BuddyInfo buddy = new BuddyInfo("Joe", "Last", 123);
 		AddressBook book = new AddressBook();
-		System.out.println(book.NumberOfContacts());
-		book.AddBuddy("Jaspreet");
-		System.out.println(book.NumberOfContacts());
-		book.RemoveBuddy("Jaspreet");
-		System.out.println(book.NumberOfContacts());
+		book.AddBuddy(buddy);
+		book.RemoveBuddy(0);
+
 	}
 }
