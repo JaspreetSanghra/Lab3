@@ -84,6 +84,6 @@ public class AddressBook
 		AddressBook book = new AddressBook();
 		book.AddBuddy(buddy);
 		book.RemoveBuddy(0);
-
+		book.AddBuddy(buddy);
 	}
 }
